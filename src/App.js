@@ -91,7 +91,7 @@ const App=(props)=> {
       autoComplete="off"
      />
      <Icon>
-      <i class="fa fa-search" aria-hidden="true"></i>
+      <i className="fa fa-search" aria-hidden="true"></i>
       </Icon>
      <ListWrapper>
       <ListUl>

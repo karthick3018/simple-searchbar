@@ -13,6 +13,7 @@ export const Input = styled.input`
   padding:10px;
   border-radius: 14px 14px 0 0;
   font-size: 20px;
+  font-family: sans-serif;
   &:focus {
     outline: none;
 }
@@ -47,6 +48,7 @@ export const List = styled.li`
       margin: 20px 0px;
       font-size: 20px;
       padding:5px 0px 5px 5px;
+      font-family: sans-serif;
       &:hover {
       cursor:pointer;
       background-color: lightgray;
