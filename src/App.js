@@ -4,6 +4,7 @@ import filter from "lodash/filter";
 import axios from 'axios';
 import { useLocation } from "react-router";
 import queryString from "query-string";
+import {WrapperDiv,Input,List,ListWrapper,ListUl,Icon,NoResult} from './styles';
 
 const App=(props)=> {
 
@@ -53,7 +54,7 @@ const App=(props)=> {
 
   const handleKeyPress = (e) => {
     if(e.key==='Enter'){
-     handleOnClick(e.target.name);
+     handleOnClick(e.target.value);
     }
   }
 
@@ -79,8 +80,9 @@ const App=(props)=> {
   }
 
   return (
-   <div>
-     <input
+   <WrapperDiv>
+     
+     <Input
       name="searchBox"
       placeholder="Search"
       value = { searchBoxValue }
@@ -88,14 +90,21 @@ const App=(props)=> {
       onKeyPress ={ handleKeyPress }
       autoComplete="off"
      />
-
+     <Icon>
+      <i class="fa fa-search" aria-hidden="true"></i>
+      </Icon>
+     <ListWrapper>
+      <ListUl>
       {nameSuggestionList && 
        nameSuggestionList.map((eachName,index)=>{
             return(
-              index<20 && <li onClick={()=>handleOnClick(eachName.name)} key={ eachName.id }>{ eachName.name }</li>
+              index<10 && <List onClick={()=>handleOnClick(eachName.name)} key={ eachName.id }>{ eachName.name }</List>
             )
           })}
-   </div>
+        </ListUl>
+      </ListWrapper>
+      {nameSuggestionList && !nameSuggestionList.length && <NoResult>No results found !</NoResult>}
+   </WrapperDiv>
   );
 }
 
