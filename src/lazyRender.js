@@ -6,7 +6,7 @@ const LazyRender = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      setState(true)
+      throw new Error('I crashed!');
     }, 5000)
   }, [])
 
@@ -17,8 +17,7 @@ const LazyRender = () => {
   }
    
   return (
-    // state && renderFn()
-    state && <p>{state.value.valu}</p>
+    renderFn()
   )
 }
 

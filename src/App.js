@@ -117,9 +117,7 @@ const App=(props)=> {
       {nameSuggestionList && !nameSuggestionList.length && <NoResult>No results found !</NoResult>}
    </WrapperDiv>
    <ErrorBoundary>
-   <Suspense fallback={<div>Loading...</div>}>
         <LazyRender />
-      </Suspense>
       </ErrorBoundary>
       <button onClick={handleCalculateClick}>Calculate</button>
       </>
