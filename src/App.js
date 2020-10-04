@@ -6,6 +6,7 @@ import { useLocation } from "react-router";
 import queryString from "query-string";
 import {WrapperDiv,Input,List,ListWrapper,ListUl,Icon,NoResult} from './styles';
 import {calculateFn} from './calculate';
+import ErrorBoundary from './errorHandler';
 const LazyRender = React.lazy(() => import('./lazyRender'));
 
 
@@ -115,9 +116,11 @@ const App=(props)=> {
       </ListWrapper>
       {nameSuggestionList && !nameSuggestionList.length && <NoResult>No results found !</NoResult>}
    </WrapperDiv>
+   <ErrorBoundary>
    <Suspense fallback={<div>Loading...</div>}>
         <LazyRender />
       </Suspense>
+      </ErrorBoundary>
       <button onClick={handleCalculateClick}>Calculate</button>
       </>
   );
