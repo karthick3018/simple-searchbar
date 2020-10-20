@@ -1,13 +1,10 @@
-import React,{useState, useEffect,Suspense} from 'react';
+import React,{useState, useEffect} from 'react';
 import debounce from "lodash/debounce";
 import filter from "lodash/filter";
 import axios from 'axios';
 import { useLocation } from "react-router";
 import queryString from "query-string";
 import {WrapperDiv,Input,List,ListWrapper,ListUl,Icon,NoResult} from './styles';
-import {calculateFn} from './calculate';
-import ErrorBoundary from './errorHandler';
-const LazyRender = React.lazy(() => import('./lazyRender'));
 
 
 const App=(props)=> {
@@ -83,12 +80,6 @@ const App=(props)=> {
     return [];
   }
 
-  const handleCalculateClick = ( ) => {
-    import("./calculate").then(math => {
-      console.log(math.calculateFn(2, 3));
-    });
-  }
-
   return (
     <>
    <WrapperDiv>
@@ -116,10 +107,6 @@ const App=(props)=> {
       </ListWrapper>
       {nameSuggestionList && !nameSuggestionList.length && <NoResult>No results found !</NoResult>}
    </WrapperDiv>
-   <ErrorBoundary>
-        <LazyRender />
-      </ErrorBoundary>
-      <button onClick={handleCalculateClick}>Calculate</button>
       </>
   );
 }
